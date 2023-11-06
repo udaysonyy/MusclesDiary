@@ -9,6 +9,7 @@ import com.uday.MusclesDiary.Repositories.WorkoutRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,7 +23,8 @@ public class CalenderServiceImpl implements CalenderService {
 
     @Override
     public Calender addWorkoutToCalender(WorkoutCalenderRequestDTO workoutCalenderRequestDTO) {
-        Calender calender = new Calender();
+        Optional<Calender> calenderOptional = calenderRepository.findByDate(workoutCalenderRequestDTO.getDate());
+        Calender calender = calenderOptional.isEmpty() ? new Calender() : calenderOptional.get();
         List<Workout> workoutList = workoutRepository.findAllById(workoutCalenderRequestDTO.getWorkoutId());
         calender.setWorkout(workoutList);
         calender.setDate(workoutCalenderRequestDTO.getDate());
@@ -40,5 +42,14 @@ public class CalenderServiceImpl implements CalenderService {
         List<Workout> workoutList = calender.getWorkout().stream().filter(workout -> !(workoutCalenderRequestDTO.getWorkoutId().contains(workout.getId()))).collect(Collectors.toList());
         calender.setWorkout(workoutList);
         return calenderRepository.save(calender);
+    }
+
+    @Override
+    public Calender getWorkoutByDate(LocalDate date) {
+        Optional<Calender> calenderOptional = calenderRepository.findByDate(date);
+        if(calenderOptional.isEmpty()) {
+            return null;
+        }
+        return calenderOptional.get();
     }
 }

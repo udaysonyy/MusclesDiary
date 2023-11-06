@@ -4,23 +4,32 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
-@Entity(name = "exercise")
-public class Exercise {
+@Entity(name = "reps_and_sets")
+public class RepsAndSets {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private Integer setCount;
 
     @Column(nullable = false)
-    private String targetMuscle;
+    private Long reps;
 
     @Column(nullable = false)
     private Long memberId;
+
+    @Column(nullable = false)
+    private Long calenderId;
+
+    @Column(nullable = false)
+    private Long workoutId;
+
+    @Column(nullable = false)
+    private Long exerciseId;
 }
+
+

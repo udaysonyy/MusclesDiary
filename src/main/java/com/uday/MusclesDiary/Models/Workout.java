@@ -2,7 +2,6 @@ package com.uday.MusclesDiary.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,9 +19,8 @@ public class Workout {
     @Column(nullable = false)
     private String name;
 
-    @JsonIgnore
-    @ManyToOne
-    private Member member;
+    @Column(nullable = false)
+    private Long memberId;
 
     @ManyToMany
     @JoinTable(

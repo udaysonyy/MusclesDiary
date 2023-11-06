@@ -26,8 +26,8 @@ public class ExerciseController {
     }
 
     @GetMapping("/get-exercises/{memberId}")
-    public ResponseEntity<List<Exercise>> addWorkout(@PathVariable(value = "memberId") Long id){
-        List<Exercise> exercises = exerciseService.getExercises(id);
+    public ResponseEntity<List<Exercise>> addWorkout(@PathVariable(value = "memberId") Long memberId){
+        List<Exercise> exercises = exerciseService.getExercises(memberId);
         return ResponseEntity.ok(exercises);
     }
 }

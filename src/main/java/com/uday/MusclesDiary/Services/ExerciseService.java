@@ -12,5 +12,5 @@ import java.util.List;
 public interface ExerciseService {
     Exercise addExercise(ExerciseRequestDTO exerciseRequestDTO);
 
-    List<Exercise> getExercises(Long id);
+    List<Exercise> getExercises(Long memberId);
 }

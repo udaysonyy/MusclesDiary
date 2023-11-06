@@ -32,9 +32,6 @@ public class Member implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "member", cascade = {CascadeType.REMOVE})
-    private List<Workout> workoutList;
-
     @Enumerated(EnumType.STRING)
     private Role role;
 

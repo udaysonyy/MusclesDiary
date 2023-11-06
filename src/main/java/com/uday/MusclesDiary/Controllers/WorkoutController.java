@@ -30,4 +30,10 @@ public class WorkoutController {
         List<Workout> workoutList = workoutService.getWorkout(id);
         return ResponseEntity.ok(workoutList);
     }
+
+    @PostMapping("/add-exercise-to-workout")
+    public ResponseEntity<Workout> addExerciseToWorkout(@RequestBody WorkoutRequestDTO workoutRequestDTO){
+        Workout workout = workoutService.addExerciseToWorkout(workoutRequestDTO);
+        return ResponseEntity.ok(workout);
+    }
 }

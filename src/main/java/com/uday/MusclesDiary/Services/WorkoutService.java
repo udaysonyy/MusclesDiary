@@ -12,4 +12,6 @@ public interface WorkoutService {
     Workout addWorkout(WorkoutRequestDTO workoutRequestDTO);
 
     List<Workout> getWorkout(Long id);
+
+    Workout addExerciseToWorkout(WorkoutRequestDTO workoutRequestDTO);
 }

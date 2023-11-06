@@ -11,4 +11,5 @@ public class WorkoutRequestDTO {
     private String name;
     private Long memberId;
     private List<Long> exerciseId;
+    private Long workoutId;
 }

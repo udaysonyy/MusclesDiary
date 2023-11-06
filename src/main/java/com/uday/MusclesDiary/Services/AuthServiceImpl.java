@@ -30,7 +30,7 @@ public class AuthServiceImpl implements AuthService{
         member.setLastName(memberRequestRTO.getLastName());
         member.setEmail(memberRequestRTO.getEmail());
         member.setPassword(passwordEncoder.encode(memberRequestRTO.getPassword()));
-        member.setRole(memberRequestRTO.getRole().equals("USER") ? Role.USER : Role.ADMIN);
+        member.setRole(memberRequestRTO.getRole().equalsIgnoreCase("USER") ? Role.USER : Role.ADMIN);
         Member savedMember = memberRepository.save(member);
 
         String token = jwtService.generateToken(member);

@@ -3,9 +3,9 @@ package com.uday.MusclesDiary.Controllers;
 import com.uday.MusclesDiary.DTOs.WorkoutCalenderRequestDTO;
 import com.uday.MusclesDiary.Models.Calender;
 import com.uday.MusclesDiary.Services.CalenderServiceImpl;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/calender")
@@ -18,12 +18,17 @@ public class CalenderController {
     }
 
     @PostMapping("add-calender")
-    private Calender addWorkoutToCalender(WorkoutCalenderRequestDTO workoutCalenderRequestDTO){
+    private Calender addWorkoutToCalender(@RequestBody WorkoutCalenderRequestDTO workoutCalenderRequestDTO){
         return calenderService.addWorkoutToCalender(workoutCalenderRequestDTO);
     }
 
     @PostMapping("remove-calender")
-    private Calender removeWorkoutFromCalender(WorkoutCalenderRequestDTO workoutCalenderRequestDTO){
+    private Calender removeWorkoutFromCalender(@RequestBody WorkoutCalenderRequestDTO workoutCalenderRequestDTO){
         return calenderService.removeWorkoutFromCalender(workoutCalenderRequestDTO);
+    }
+
+    @GetMapping("get-calender-workout")
+    private Calender getWorkoutByDate(@RequestParam(name = "date") LocalDate date){
+        return calenderService.getWorkoutByDate(date);
     }
 }

@@ -1,20 +1,12 @@
 package com.uday.MusclesDiary.Services;
 
 import com.uday.MusclesDiary.DTOs.ExerciseRequestDTO;
-import com.uday.MusclesDiary.Exception.ExerciseNotFoundException;
-import com.uday.MusclesDiary.Exception.MemberNotFoundException;
 import com.uday.MusclesDiary.Models.Exercise;
-import com.uday.MusclesDiary.Models.Member;
-import com.uday.MusclesDiary.Models.Workout;
 import com.uday.MusclesDiary.Repositories.ExerciseRepository;
 import com.uday.MusclesDiary.Repositories.MemberRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static com.uday.MusclesDiary.Common.Constant.EXERCISE_NOT_FOUND;
-import static com.uday.MusclesDiary.Common.Constant.MEMBER_NOT_FOUND;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService{
@@ -37,8 +29,8 @@ public class ExerciseServiceImpl implements ExerciseService{
     }
 
     @Override
-    public List<Exercise> getExercises(Long id) {
-        return exerciseRepository.getExercise(id);
+    public List<Exercise> getExercises(Long memberId) {
+        return exerciseRepository.getExercise(memberId);
     }
 
 //    private void setWorkoutToExercise(List<Long> workoutId, Exercise exercise) {
